@@ -1,14 +1,12 @@
 # canvasBot
 
-A personal Canvas Study Assistant learning project: connect to Canvas, select one course, import a small set of accessible text-based PDFs, and build retrieval and grounded answers with document and page citations.
+A local study tool designed to connect Canvas course materials with searchable evidence and answers that cite specific documents and pages.
 
 ## Current status
 
-Planning and repository setup only. Application code, dependency installation, usable Python execution, and a real Canvas connection have yet to be verified. No retrieval or answer-quality results have been measured.
+Early development. The project specification, repository, and documentation are in place. Application implementation and Canvas connectivity are pending. Retrieval and answer quality have not yet been evaluated.
 
-The repository is being reused from OpportunityLens at the owner's request. Earlier commits and branches retain that project's history; the current project is canvasBot.
-
-## Planned core
+## Planned capabilities
 
 - A real Canvas API connection with explicit manual import of 5 to 10 selected PDFs from one course.
 - Page-preserving extraction, deterministic chunks, and SQLite persistence.
@@ -16,16 +14,22 @@ The repository is being reused from OpportunityLens at the owner's request. Earl
 - Grounded answers with document and page citations, supporting passages, and insufficient-evidence behavior.
 - A small frozen evaluation comparing retrieval methods and checking answer support.
 
-Start with a command-line flow. A minimal Streamlit interface is optional after the core works. PostgreSQL, vector database services, Docker, a separate backend, automatic sync, OCR, video, and multi-course search are deferred. LangGraph and MCP are extensions after the core evaluation.
+The initial interface will be a command-line workflow. A minimal Streamlit interface may follow after the core evaluation.
 
-## Building and learning
+## Architecture
 
-This is a learner-led project. Work proceeds one small exercise at a time, with observed output reviewed before progress is recorded.
+Canvas API → selected PDFs → page extraction → chunks and SQLite storage → keyword and semantic retrieval → evidence-grounded answers.
 
-Start with the [build guide](docs/canvas-copilot-build-guide.md), check [verified progress](docs/progress.md), then follow the [first milestone plan](docs/canvasbot-first-milestone-plan.md). The [guided handoff](docs/canvasbot-guided-handoff.md) records the coaching workflow.
+The planned stack uses Python, HTTPX, Pydantic Settings, pypdf, SQLite, scikit-learn, and Sentence Transformers. The answer-generation provider will be selected during implementation.
 
-The next checkpoint is to verify available Python interpreters and the existing virtual environment locally. Python 3.12 is preferred in the plan, but the selected runtime and package compatibility still require verification. There is no runnable application or dependency manifest yet.
+## Documentation
 
-Keep Canvas credentials local. Credentials, virtual environments, and downloaded course materials are excluded from version control. Public demonstrations should use permitted public or synthetic documents.
+- [Architecture and scope](docs/architecture.md)
+- [Milestone 1: Canvas connection](docs/milestone-1.md)
+- [Development status](docs/progress.md)
 
-The planning estimate is 30 to 38 focused hours including buffer. At about 20 hours, Canvas import and retrieval are the safer milestone.
+## Development
+
+The next milestone is environment verification, validated configuration, and an authenticated Canvas course listing. Setup instructions will be added as the first runnable workflow is implemented.
+
+Credentials, virtual environments, and downloaded course materials are excluded from version control. Public demonstrations will use permitted public or synthetic documents.
