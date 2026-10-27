@@ -5,7 +5,7 @@ Updated 27 October 2026.
 ## Verified starting state
 
 - [x] Inspect the root and existing documents.
-  - Evidence: root has `.venv/` and `docs/`; no application code or `.git` directory exists.
+  - Evidence: inspection on 26 October 2026 found `.venv/` and `docs/`, with no application code or `.git` directory before the repository migration.
 - [x] Identify the existing environment configuration.
   - Evidence: `.venv/pyvenv.cfg` records Python 3.14.2. Runtime execution and package availability remain unverified because execution was denied in both the originating and receiving chats.
 - [x] Agree the product direction and planning changes.
@@ -13,9 +13,10 @@ Updated 27 October 2026.
 - [x] Replace the older architecture with the scoped build guide and handoff, and add a first-milestone plan.
   - Scope: one course, selected text PDFs, SQLite, retrieval comparison, cited answers and evaluation.
 - [x] Move the existing repository history into CanvasBot and save a local recovery copy at the user's request.
-  - Evidence: the checkout is now on `main` at `ce0aaa1`; four linked checkouts remain registered after `git worktree repair`. Old working files, including the untracked audit output, and a Git metadata copy are stored outside this repository at `C:/Users/Loh Yang Zhi/Documents/Projects/CanvasBot-Recovery-20261027`.
+  - Evidence: before the replacement commit, local and remote `main` matched at `ce0aaa1`. Four linked checkouts remain registered after `git worktree repair`. Old working files, including the untracked audit output, and a Git metadata copy are stored outside this repository at `C:/Users/Loh Yang Zhi/Documents/Projects/CanvasBot-Recovery-20261027`.
   - GitHub identity verified after renaming: `yangzhiloh/canvasBot`, default branch `main`, public visibility. The local remote now points to `https://github.com/yangzhiloh/canvasBot.git`.
   - The replacement snapshot contains only a README, `.gitignore`, and the four Canvas planning documents. All four linked checkouts resolve to the moved Git metadata; Git connectivity, four local Markdown links, and ten credential/data/cache exclusion cases were checked successfully. `.env.example` remains trackable. No application tests exist yet.
+  - Replacement commit `6a39e1b7de6e904acf3a57e4a0df270fab992285` was pushed to `main` and matched the commit returned by GitHub. Repository ID `1348828171` was unchanged, and the working tree was clean after publication.
 
 ## Outstanding milestones
 
@@ -31,7 +32,7 @@ Updated 27 October 2026.
 
 Begin M1 using `docs/canvasbot-first-milestone-plan.md`. Verify available Python interpreters and the existing environment before selecting a runtime. Do not mark dependencies or Canvas access complete without actual results.
 
-Receiving-chat inspection on 26 October 2026 confirmed the root still contains only `docs/` and `.venv/`. In the assistant's execution environment, `py -0p` reported only Python 3.14 at `C:\Python314\python.exe`, and `.venv/Scripts/python.exe --version` returned "Access is denied." These observations do not establish that the user's local environment is broken. Next, have the user run the interpreter checks in their own PowerShell terminal and inspect the output before selecting a runtime. No M1 checkpoint is complete.
+Receiving-chat inspection on 26 October 2026 confirmed the root then contained only `docs/` and `.venv/`. In the assistant's execution environment, `py -0p` reported only Python 3.14 at `C:\Python314\python.exe`, and `.venv/Scripts/python.exe --version` returned "Access is denied." These observations do not establish that the user's local environment is broken. Next, have the user run the interpreter checks in their own PowerShell terminal and inspect the output before selecting a runtime. Repository setup and exclusion rules are verified; interpreter usability, dependencies, configuration tests and Canvas access remain unverified.
 
 ## Budget
 
