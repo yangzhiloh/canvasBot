@@ -1,61 +1,31 @@
-# OpportunityLens SG
+# canvasBot
 
-OpportunityLens is a local-first portfolio project for evidence-grounded Singapore internship intelligence. It is designed to collect public employer career data, preserve source provenance, and help a candidate compare opportunities without automating job applications.
+A personal Canvas Study Assistant learning project: connect to Canvas, select one course, import a small set of accessible text-based PDFs, and build retrieval and grounded answers with document and page citations.
 
-## Why This Project
+## Current status
 
-Internship information is scattered across employer career sites and applicant tracking systems. Eligibility rules, role status, and evidence quality are often inconsistent or unclear.
+Planning and repository setup only. Application code, dependency installation, usable Python execution, and a real Canvas connection have yet to be verified. No retrieval or answer-quality results have been measured.
 
-OpportunityLens is being built around four principles:
+The repository is being reused from OpportunityLens at the owner's request. Earlier commits and branches retain that project's history; the current project is canvasBot.
 
-- Keep every material claim linked to inspectable source evidence.
-- Represent eligibility as eligible, ineligible, or unknown instead of forcing certainty.
-- Make uncertainty and stale data visible.
-- Keep the system read-only. It does not submit applications or act on a candidate's behalf.
+## Planned core
 
-## Current Status
+- A real Canvas API connection with explicit manual import of 5 to 10 selected PDFs from one course.
+- Page-preserving extraction, deterministic chunks, and SQLite persistence.
+- Keyword search with TF-IDF, semantic search with local sentence embeddings, and hybrid search with reciprocal rank fusion.
+- Grounded answers with document and page citations, supporting passages, and insufficient-evidence behavior.
+- A small frozen evaluation comparing retrieval methods and checking answer support.
 
-The OpportunityLens foundation is implemented:
+Start with a command-line flow. A minimal Streamlit interface is optional after the core works. PostgreSQL, vector database services, Docker, a separate backend, automatic sync, OCR, video, and multi-course search are deferred. LangGraph and MCP are extensions after the core evaluation.
 
-- Typed environment settings with an `OPPORTUNITYLENS_` prefix.
-- A Typer command-line entry point with a version command.
-- Structured logging configuration.
-- A reproducible source-audit workflow for Singapore employer career systems.
-- Tests for the implemented foundation and audit tooling.
+## Building and learning
 
-The domain and evidence contracts, persistence layer, provider adapters, ranking pipeline, evaluation harness, API, and web interface are planned but not implemented yet.
+This is a learner-led project. Work proceeds one small exercise at a time, with observed output reviewed before progress is recorded.
 
-The repository does not claim measured product performance before those evaluations exist. Current source-audit findings are documented separately from future product metrics.
+Start with the [build guide](docs/canvas-copilot-build-guide.md), check [verified progress](docs/progress.md), then follow the [first milestone plan](docs/canvasbot-first-milestone-plan.md). The [guided handoff](docs/canvasbot-guided-handoff.md) records the coaching workflow.
 
-## Technology Direction
+The next checkpoint is to verify available Python interpreters and the existing virtual environment locally. Python 3.12 is preferred in the plan, but the selected runtime and package compatibility still require verification. There is no runnable application or dependency manifest yet.
 
-The approved architecture uses Python 3.12, PostgreSQL with pgvector, SQLAlchemy, FastAPI, LangGraph, Sentence Transformers, OpenTelemetry, PyYAML, Typer, Structlog, Ruff, mypy, and Pytest. A web interface is planned for a later milestone.
+Keep Canvas credentials local. Credentials, virtual environments, and downloaded course materials are excluded from version control. Public demonstrations should use permitted public or synthetic documents.
 
-## Local Setup
-
-Install Python 3.12, uv, and Git. Then synchronize the project:
-
-```powershell
-uv sync
-```
-
-Copy `.env.example` to `.env` and adjust local values when a milestone requires them. The current version command does not require a running database:
-
-```powershell
-uv run opportunitylens version
-```
-
-Run the deterministic test suite:
-
-```powershell
-uv run pytest -q
-```
-
-## Project Documentation
-
-- Product design: `docs/superpowers/specs/2026-09-14-opportunitylens-sg-design.md`
-- MVP implementation plan: `docs/superpowers/plans/2026-09-14-opportunitylens-sg-mvp.md`
-- Source-audit methodology: `docs/source-audit/methodology.md`
-- Source-audit findings: `docs/source-audit/findings.md`
-
-Work proceeds in small milestone branches so each concept can be implemented, tested, reviewed, and understood before the next layer is added.
+The planning estimate is 30 to 38 focused hours including buffer. At about 20 hours, Canvas import and retrieval are the safer milestone.
